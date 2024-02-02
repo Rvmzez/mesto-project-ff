@@ -1,31 +1,26 @@
-const placesList = document.querySelector('.places__list');
 const cardTemplate = document.querySelector('#card-template').content;
 const addButton = document.querySelector('.profile__add-button');
+const placesList = document.querySelector('.places__list');
 
-const createCard = initialCards.map(function (item) {
-    return {
-        name: item.name,
-        link: item.link
-    }
+function createCard(initialCards) {
+    const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+    const deleteButton = cardElement.querySelector('.card__delete-button');
+
+    cardElement.querySelector('.card__image').src = initialCards.link;
+    cardElement.querySelector('.card__title').textContent = initialCards.name;
+
+    deleteButton.addEventListener('click', () => {
+        deleteCard(cardElement)
+    })
+    return cardElement
+};
+
+function deleteCard(cardElement) {
+    cardElement.remove()
+    };
+
+initialCards.forEach((element) => {
+    placesList.append(createCard(element))
 });
+       
 
-function render () {
-    initialCards.forEach(renderCard)
-};
-
-function renderCard ({name, link}) {
-    const cardElement = cardTemplate.cloneNode(true);
-
-    cardElement.querySelector('.card__image').src = link;
-    cardElement.querySelector('.card__title').textContent = name;
-
-    placesList.append(cardElement)
-};
-
-render();
-
-document.querySelector('.page__content').onclick = function (delBtn) {
-    if(delBtn.target.className != 'card__delete-button') return
-    const crdTmpl = delBtn.target.closest('.places__item')
-       crdTmpl.remove()
-    }
