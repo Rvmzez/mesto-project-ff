@@ -7,6 +7,7 @@ function createCard(cardData, deleteCard, cardLike, openImagePopup) {
   const cardImageButton = cardElement.querySelector(".card__image");
 
   cardImageButton.src = cardData.link;
+  cardImageButton.alt = cardData.name;
   cardElement.querySelector(".card__title").textContent = cardData.name;
 
   deleteButton.addEventListener("click", () => {
@@ -18,7 +19,7 @@ function createCard(cardData, deleteCard, cardLike, openImagePopup) {
   });
 
   cardImageButton.addEventListener("click", () => {
-    openImagePopup(cardElement);
+    openImagePopup(cardData);
   });
   return cardElement;
 }
