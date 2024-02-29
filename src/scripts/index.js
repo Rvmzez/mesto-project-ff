@@ -34,21 +34,21 @@ popup.forEach((item) => {
   item.classList.add("popup_is-animated");
 });
 
-profileEditButton.addEventListener(
-  "click",
-  () => popupIsOpened(popupTypeEdit),
-  addNameJobInput(nameInput, jobInput)
-);
+profileEditButton.addEventListener("click", () => {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileDescription.textContent;
+  popupIsOpened(popupTypeEdit);
+});
 addButton.addEventListener("click", () => popupIsOpened(popupTypeNewCard));
 formElement.addEventListener("submit", handleFormSubmit);
 formElementCard.addEventListener("submit", cardFormSubmit);
 
 for (let i = 0; i < popup.length; i++) {
   popup[i].addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("popup__close")) {
-      addNameJobInput(nameInput, jobInput);
-      closePopup(popup[i]);
-    } else if (evt.target.classList.contains("popup")) {
+    if (
+      evt.target.classList.contains("popup__close") ||
+      evt.target.classList.contains("popup")
+    ) {
       closePopup(popup[i]);
     }
   });
@@ -73,11 +73,6 @@ function openImagePopup(cardData) {
   document.addEventListener("keydown", closePopupEsc);
 }
 
-function addNameJobInput(inputName, inputJob) {
-  inputName.value = profileTitle.textContent;
-  inputJob.value = profileDescription.textContent;
-}
-
 function editProfile(nameValue, jobValue) {
   profileTitle.textContent = nameValue;
   profileDescription.textContent = jobValue;
@@ -88,7 +83,8 @@ function handleFormSubmit(evt) {
 
   editProfile(nameInput.value, jobInput.value);
   formElement.reset();
-  addNameJobInput(nameInput, jobInput);
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileDescription.textContent;
   closePopup(popupTypeEdit);
 }
 

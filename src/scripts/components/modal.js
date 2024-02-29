@@ -12,10 +12,8 @@ function closePopup(popup) {
 
 function closePopupEsc(evt) {
   if (evt.key === "Escape") {
-    const popup = document.querySelectorAll(".popup");
-    for (let i = 0; i < popup.length; i++) {
-      closePopup(popup[i]);
-    }
+    const activePopup = document.querySelector(".popup_is-opened");
+    closePopup(activePopup);
   }
 }
 
