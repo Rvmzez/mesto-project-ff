@@ -19,6 +19,16 @@
   cursor: pointer;
 }
 
+.popup__button:disabled {
+  pointer-events: none;
+}
+
+.form__submit_inactive {
+  background: #ffffff;
+  color: #C4C4C4;
+  border-color: #C4C4C4;
+}
+
 @media screen and (max-width: 568px) {
   .popup__button {
     font-size: 14px;
