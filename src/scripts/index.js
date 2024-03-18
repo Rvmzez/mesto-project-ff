@@ -90,8 +90,6 @@ function openImagePopup(cardData) {
   popupCaption.textContent = cardData.name;
 
   openPopup(popupTypeImage);
-
-  document.addEventListener("keydown", closePopupEsc);
 }
 
 function handleProfileFormSubmit(evt, loadingText = "Сохранение...") {

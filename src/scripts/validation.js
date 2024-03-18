@@ -104,8 +104,7 @@ function hasInvalidInputRegular(inputList, validationConfig) {
 //функция переключения кнопки отправки формы
 function toggleButtonState(inputList, buttonElement, validationConfig) {
   if (hasInvalidInput(inputList) || hasInvalidInputRegular(inputList)) {
-    buttonElement.disabled = true;
-    buttonElement.classList.add(validationConfig.formSubmitInactive);
+    disableButton(buttonElement, validationConfig);
   } else {
     buttonElement.disabled = false;
     buttonElement.classList.remove(validationConfig.formSubmitInactive);
