@@ -9,8 +9,8 @@ import {
   createNewCard,
 } from "./api.js";
 import { validationConfig } from "./utils/constants.js";
-import { renderLoading, request } from "./utils/utils.js";
-import { openPopup, closePopup, closePopupEsc } from "./components/modal.js";
+import { renderLoading } from "./utils/utils.js";
+import { openPopup, closePopup } from "./components/modal.js";
 import { createCard, addClassLike, deleteCardData } from "./components/card.js";
 import { enableValidation, clearValidation } from "./validation.js";
 import "../pages/index.css";
